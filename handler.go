@@ -45,7 +45,7 @@ func (h *BotHandler) addUserTo3xUI(m *telebot.Message) (string, error) {
 	// Fetch inbounds from 3x-ui
 	inboundsResp, err := h.client.GetInbounds(context.Background())
 	if err != nil {
-		h.bot.Send(m.Sender, "Ошибка при получении списка вхождений.")
+		h.bot.Send(m.Sender, "Failed to get inbounds: "+err.Error())
 		return "", err
 	}
 
@@ -58,14 +58,14 @@ func (h *BotHandler) addUserTo3xUI(m *telebot.Message) (string, error) {
 	}
 
 	if targetInbound == nil {
-		h.bot.Send(m.Sender, "Вход с тегом 'chebvpn' не найден.")
+		h.bot.Send(m.Sender, "inbound with tag 'chebvpn' not found")
 		return "", fmt.Errorf("inbound with tag 'chebvpn' not found")
 	}
 
 	var settings client3xui.VlessSetting
 	err = json.Unmarshal([]byte(targetInbound.Settings), &settings)
 	if err != nil {
-		h.bot.Send(m.Sender, "Ошибка распаковки настроек влета: "+err.Error())
+		h.bot.Send(m.Sender, "Failed to get vless settings: "+err.Error())
 		return "", err
 	}
 
@@ -79,7 +79,7 @@ func (h *BotHandler) addUserTo3xUI(m *telebot.Message) (string, error) {
 	if subID == "" {
 		client, err := h.addClientToInbound(userID, userName, targetInbound.ID)
 		if err != nil {
-			h.bot.Send(m.Sender, "Не удалось добавить клиента: "+err.Error())
+			h.bot.Send(m.Sender, "Failed to add client: "+err.Error())
 			return "", err
 		}
 		subID = client.SubID
