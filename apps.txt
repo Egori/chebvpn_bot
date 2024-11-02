@@ -1,0 +1,6 @@
+Windows, MacOS, Linux|Amnesia VPN: https://github.com/amnezia-vpn/amnezia-client/releases/latest
+Windows, MacOS, Linux|Hiddify: https://github.com/hiddify/hiddify-next/releases/latest
+Android|Hiddify: https://play.google.com/store/apps/details?id=app.hiddify.com
+Android|Amnesia VPN: https://play.google.com/store/apps/details?id=org.amnezia.vpn
+iOS|FoXray: https://apps.apple.com/us/app/foxray/id6448898396
+iOS|Amnesia VPN: https://apps.apple.com/us/app/amneziavpn/id1600529900
